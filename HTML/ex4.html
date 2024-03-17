@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML FORMS and JS</title>
+    <link rel="stylesheet" href="ex4.css">
+</head>
+
+<body>
+    <header>
+        <h1>HTML FORMS and JS Lab</h1>
+    </header>
+    <main>
+        <form id="myForm">
+            <!-- TEXT field -->
+            <label for="text_field">Text:</label><br>
+            <input type="text" id="text_field" name="text_field" /> <br>
+
+            <!-- URL field -->
+            <label for="URL_field">URL:</label><br>
+            <input type="url" id="URL_field" name="URL_field" /> <br>
+
+            <!-- Number field -->
+            <label for="number_field">Number:</label><br>
+            <input type="number" id="number_field" name="number_field"><br>
+
+            <!-- Radio Buttons -->
+            <label>Radio:</label><br>
+            <input type="radio" id="radio_option1" name="radio_group" value="option1">
+            <label for="radio_option1">Option 1</label>
+            <input type="radio" id="radio_option2" name="radio_group" value="option2">
+            <label for="radio_option2">Option 2</label><br>
+
+            <!-- Email Input -->
+            <label for="email_field">Email:</label><br>
+            <input type="email" id="email_field" name="email_field"> <br>
+
+            <!-- Password Input -->
+            <label for="password_field">Password:</label><br>
+            <input type="password" id="password_field" name="password_field"><br>
+
+            <!-- Checkbox -->
+            <input type="checkbox" id="checkbox_field" name="checkbox_field">
+            <label for="checkbox_field">Check</label><br>
+
+            <!-- Select with 3 Options -->
+            <label for="select_field">Select:</label>
+            <select id="select_field" name="select_field">
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select><br>
+
+            <!-- Submit Button -->
+            <input type="submit" value="Submit">
+        </form>
+    </main>
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            var textValue = document.getElementById("text_field").value;
+            var urlValue = document.getElementById("URL_field").value;
+            var numberValue = document.getElementById("number_field").value;
+            var radioValue = document.querySelector('input[name="radio_group"]:checked');
+            var emailValue = document.getElementById("email_field").value;
+            var passwordValue = document.getElementById("password_field").value;
+            var checkboxValue = document.getElementById("checkbox_field").checked;
+            var selectValue = document.getElementById("select_field").value;
+
+            if (!textValue || !urlValue || !numberValue || !radioValue || !emailValue || !passwordValue || !checkboxValue || !selectValue) {
+                alert('Please fill in all fields.');
+            } else {
+                alert("Submitted");
+            }
+        });
+    </script>
+</body>
+
+</html>

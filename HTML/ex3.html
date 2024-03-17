@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Welcome to Rocket Inc.</title>
+    <link rel="stylesheet" href="ex3.css">
+
+</head>
+
+
+
+<body>
+    <header>
+        <!-- Logo rocket -->
+        <a class="rocket-logo" href="http://127.0.0.1:5500/HTML/ex3.html?">
+            <img src="rocket-logo.png" alt="Rocket Inc. Logo">
+        </a>
+        <!-- Social icons -->
+        <nav class="social-icons">
+            <a href="https://www.facebook.com/" id="facebook-icon" target="_blank">
+                <img src="Facebook_icon.svg.webp" alt="Facebook">
+            </a>
+            <a href="https://twitter.com/" id="twitter-icon" target="_blank">
+                <img src="twitter-logo.png" alt="Twitter">
+            </a>
+            <a href="https://www.instagram.com/" id="instagram-icon" target="_blank">
+                <img src="instagram-icon-logo-free-png.webp" alt="Instagram">
+            </a>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <!--Comming soon line-->
+        <span style="font-size: 40px; font-family: 'Times New Roman', Times, serif;">Coming soon</span>
+        <h1>Welcome to Rocket Inc.</h1>
+        <img id="rocket-image" src="rocket-image.png" alt="Rocket Image">
+
+        <!-- Input form + button -->
+        <form>
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <button type="submit">Submit</button>
+            <!-- Clock initialization -->
+        </form>
+        <p style="font-size: 30px; line-height: 2;">
+            <span id="launch_counter">00:00:00 </span>
+            <button id="refreshButton" onclick="alert('Reset Time Successfully!')"
+                style="background: none; border: none;">
+                <img style="width: 30px; height: auto; display: block; background: none; border: none;"
+                    src="https://cdn0.iconfinder.com/data/icons/glyphpack/41/refresh-512.png" alt="">
+
+
+            </button>
+        </p>
+    </main>
+
+    <script>
+        // Set the date we're counting down to, we assign to a constant as this shouldn't be changedin our code.
+        // We are using the date object (https://www.w3schools.com/jsref/jsref_obj_date.asp) with adate string, a special string format that JS understands
+        //  We are then converting this to a unix timestamp, although in milliseconds not seconds
+        const launchDate = new Date('June 5, 2024 11:00:00').getTime();  // Adjust for your desired launch date
+
+        let timeDifference;
+
+        const updateCounter = () => {
+            timeDifference = calculateDifference();
+
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor(timeDifference % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+            const minutes = Math.floor(timeDifference % (1000 * 60 * 60) / (1000 * 60));
+            const seconds = Math.floor(timeDifference / 1000) % 60;
+            // Find the element we want to interact with by it's ID attribute
+            const outputElement = document.getElementById('launch_counter');
+            // Update the HTML of that element
+            outputElement.innerHTML = formatTime(days, hours, minutes, seconds);
+
+            if (timeDifference > 0) {
+                requestAnimationFrame(updateCounter);
+            }
+        };
+        // Calculate time
+        const calculateDifference = () => {
+            const now = new Date().getTime();
+            return launchDate - now;
+        };
+        //Format the time into a string
+        const formatTime = (days, hours, minutes, seconds) => {
+            const formattedTime = [days, hours, minutes, seconds]
+                .map(num => num.toString().padStart(2, '0'))
+                .join(':');
+            return formattedTime;
+        };
+        const reset = () => {
+            cancelAnimationFrame(animationFrameId);
+            updateCounter();
+        }
+        const refreshButton = document.getElementById('refreshButton');
+        refreshButton.addEventListener('click', () => {
+            updateCounter();
+        });
+        reset();
+
+
+
+    </script>
+
+</body>
+
+
+</html>
