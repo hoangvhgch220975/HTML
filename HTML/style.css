@@ -1,0 +1,65 @@
+/* Reset default margin and padding */
+body,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.horizontal-nav {
+    background-color: #333;
+    /* Màu nền của thanh điều hướng */
+}
+
+.horizontal-nav ul {
+    list-style-type: none;
+    /* Ẩn dấu chấm đầu dòng của danh sách */
+    text-align: center;
+    /* Căn giữa nội dung của thanh điều hướng */
+}
+
+.horizontal-nav ul li {
+    display: inline;
+    /* Hiển thị các mục li theo chiều ngang */
+}
+
+.horizontal-nav ul li a {
+    display: inline-block;
+    /* Hiển thị các liên kết như các khối nội dung */
+    padding: 10px 20px;
+    /* Khoảng cách giữa các mục */
+    color: #fff;
+    /* Màu chữ */
+    text-decoration: none;
+    /* Ẩn gạch chân của liên kết */
+}
+
+.horizontal-nav ul li a:hover {
+    background-color: #555;
+    /* Màu nền khi di chuột qua liên kết */
+}
+
+h1 {
+    text-align: center;
+    /* Căn giữa tiêu đề */
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Hiển thị ảnh ở giữa trang */
+}
+
+/* CSS */
+div[itemtype="http://schema.org/Product"] img {
+    width: 735px;
+    /* Kích thước mới của hình ảnh */
+    height: 383px;
+    /* Tự động tính toán chiều cao dựa trên tỉ lệ của hình ảnh */
+}
+
+div [itemtype="http://schema.org/Product"] h1 {
+    margin-top: 100px;
+}
+
